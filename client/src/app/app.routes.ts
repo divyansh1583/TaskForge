@@ -28,6 +28,11 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'projects',
+    loadChildren: () =>
+      import('./features/projects/projects.routes').then((m) => m.PROJECT_ROUTES),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./shared/components/not-found/not-found.component').then(

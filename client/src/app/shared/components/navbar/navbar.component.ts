@@ -41,10 +41,7 @@ import { Roles } from '@core/constants/roles.constant';
               <a
                 routerLink="/projects"
                 routerLinkActive="bg-primary-50 text-primary-700"
-                class="nav-link nav-link-disabled"
-              >
-                Projects
-                <span class="ml-1 text-xs text-secondary-400">(Phase 2)</span>
+                class="nav-link">Projects
               </a>
 
               <a
@@ -155,9 +152,7 @@ import { Roles } from '@core/constants/roles.constant';
               Dashboard
             </a>
             <a
-              class="block px-4 py-2 text-sm text-secondary-400 cursor-not-allowed"
-            >
-              Projects (Phase 2)
+              routerLink="/projects" routerLinkActive="bg-primary-50 text-primary-700" class="block px-4 py-2 text-sm text-secondary-700 hover:bg-secondary-100 rounded">Projects
             </a>
             <a
               class="block px-4 py-2 text-sm text-secondary-400 cursor-not-allowed"
@@ -237,3 +232,6 @@ export class NavbarComponent {
     this.authService.logout();
   }
 }
+
+
+

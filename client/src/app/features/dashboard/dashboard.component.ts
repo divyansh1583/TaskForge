@@ -115,13 +115,12 @@ import { NavbarComponent } from '@shared/components/navbar/navbar.component';
           <div class="card-body">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               @if (isAdmin() || isManager()) {
-                <button class="btn-outline py-4 flex flex-col items-center space-y-2" disabled>
-                  <svg class="w-8 h-8 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a routerLink="/projects/new" class="btn-outline py-4 flex flex-col items-center space-y-2 hover:bg-primary-50 hover:border-primary-500">
+                  <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                   </svg>
-                  <span>Create Project</span>
-                  <span class="text-xs text-secondary-400">Phase 2</span>
-                </button>
+                  <span class="text-primary-700">Create Project</span>
+                </a>
               }
 
               <button class="btn-outline py-4 flex flex-col items-center space-y-2" disabled>
@@ -207,3 +206,4 @@ export class DashboardComponent {
     }
   }
 }
+
