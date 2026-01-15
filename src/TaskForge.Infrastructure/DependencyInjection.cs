@@ -98,6 +98,8 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IDateTimeService, DateTimeService>();
+        services.AddScoped<IProjectService, ProjectService>();
+        services.AddScoped<ITeamService, TeamService>();
 
         return services;
     }

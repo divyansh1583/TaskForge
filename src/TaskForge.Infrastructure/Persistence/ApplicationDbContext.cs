@@ -24,6 +24,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
         _dateTimeService = dateTimeService;
     }
 
+    // DbSets for domain entities
+    public DbSet<Project> Projects => Set<Project>();
+    public DbSet<Team> Teams => Set<Team>();
+    public DbSet<TeamMember> TeamMembers => Set<TeamMember>();
+
     /// <summary>
     /// Override SaveChanges to automatically set audit fields.
     /// WHY: Centralizes audit logic, ensuring all entities have consistent
@@ -78,7 +83,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
             entity.Property(u => u.FirstName).HasMaxLength(50).IsRequired();
             entity.Property(u => u.LastName).HasMaxLength(50).IsRequired();
             entity.Property(u => u.RefreshToken).HasMaxLength(256);
-            
+
             // Global query filter for soft delete
             entity.HasQueryFilter(u => !u.IsDeleted);
         });

@@ -2,7 +2,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using TaskForge.Application.Features.Auth.DTOs;
+using TaskForge.Application.DTOs.Auth;
 using TaskForge.Application.Interfaces;
 
 namespace TaskForge.API.Controllers;
@@ -163,7 +163,7 @@ public class AuthController : BaseApiController
     public async Task<IActionResult> RevokeToken()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        
+
         if (string.IsNullOrEmpty(userId))
         {
             return Unauthorized();
@@ -181,7 +181,7 @@ public class AuthController : BaseApiController
             });
         }
 
-        return Ok(new { message = result.Message });
+        return Ok(new { message = "Token revoked successfully" });
     }
 
     /// <summary>

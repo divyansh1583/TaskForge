@@ -1,5 +1,5 @@
 using FluentValidation;
-using TaskForge.Application.Features.Auth.DTOs;
+using TaskForge.Application.DTOs.Auth;
 
 namespace TaskForge.Application.Features.Auth.Validators;
 

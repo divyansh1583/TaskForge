@@ -1,4 +1,4 @@
-namespace TaskForge.Application.Common.Models;
+namespace TaskForge.Application.Common;
 
 /// <summary>
 /// Generic paginated response wrapper for list endpoints.

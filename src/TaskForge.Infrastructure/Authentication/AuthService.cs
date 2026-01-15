@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
-using TaskForge.Application.Common.Models;
-using TaskForge.Application.Features.Auth.DTOs;
+using TaskForge.Application.Common;
+using TaskForge.Application.DTOs.Auth;
 using TaskForge.Application.Interfaces;
 using TaskForge.Domain.Entities;
 
@@ -41,7 +41,7 @@ public class AuthService : IAuthService
         var existingUser = await _userManager.FindByEmailAsync(request.Email);
         if (existingUser != null)
         {
-            return Result<AuthResponse>.Failure("A user with this email already exists.");
+            return Result<AuthResponse>.Failure("A user with this email already exists.", ResultErrorType.Validation);
         }
 
         var user = new ApplicationUser
@@ -60,7 +60,7 @@ public class AuthService : IAuthService
         if (!result.Succeeded)
         {
             return Result<AuthResponse>.Failure(
-                result.Errors.Select(e => e.Description).ToList());
+                result.Errors.Select(e => e.Description).ToList(), ResultErrorType.Validation);
         }
 
         // Assign default role (Member)
@@ -76,29 +76,29 @@ public class AuthService : IAuthService
 
         if (user == null)
         {
-            return Result<AuthResponse>.Failure("Invalid email or password.");
+            return Result<AuthResponse>.Failure("Invalid email or password.", ResultErrorType.Unauthorized);
         }
 
         if (!user.IsActive)
         {
-            return Result<AuthResponse>.Failure("This account has been deactivated.");
+            return Result<AuthResponse>.Failure("This account has been deactivated.", ResultErrorType.Forbidden);
         }
 
         if (user.IsDeleted)
         {
-            return Result<AuthResponse>.Failure("Invalid email or password.");
+            return Result<AuthResponse>.Failure("Invalid email or password.", ResultErrorType.Unauthorized);
         }
 
         var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, lockoutOnFailure: true);
 
         if (result.IsLockedOut)
         {
-            return Result<AuthResponse>.Failure("Account is locked. Please try again later.");
+            return Result<AuthResponse>.Failure("Account is locked. Please try again later.", ResultErrorType.Forbidden);
         }
 
         if (!result.Succeeded)
         {
-            return Result<AuthResponse>.Failure("Invalid email or password.");
+            return Result<AuthResponse>.Failure("Invalid email or password.", ResultErrorType.Unauthorized);
         }
 
         return await GenerateAuthResponseAsync(user);
@@ -110,43 +110,43 @@ public class AuthService : IAuthService
 
         if (principal == null)
         {
-            return Result<AuthResponse>.Failure("Invalid access token.");
+            return Result<AuthResponse>.Failure("Invalid access token.", ResultErrorType.Unauthorized);
         }
 
         var userId = principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
         if (string.IsNullOrEmpty(userId))
         {
-            return Result<AuthResponse>.Failure("Invalid access token.");
+            return Result<AuthResponse>.Failure("Invalid access token.", ResultErrorType.Unauthorized);
         }
 
         var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null || user.IsDeleted || !user.IsActive)
         {
-            return Result<AuthResponse>.Failure("User not found or inactive.");
+            return Result<AuthResponse>.Failure("User not found or inactive.", ResultErrorType.Unauthorized);
         }
 
         if (user.RefreshToken != request.RefreshToken)
         {
-            return Result<AuthResponse>.Failure("Invalid refresh token.");
+            return Result<AuthResponse>.Failure("Invalid refresh token.", ResultErrorType.Unauthorized);
         }
 
         if (user.RefreshTokenExpiryTime <= _dateTimeService.UtcNow)
         {
-            return Result<AuthResponse>.Failure("Refresh token has expired.");
+            return Result<AuthResponse>.Failure("Refresh token has expired.", ResultErrorType.Unauthorized);
         }
 
         return await GenerateAuthResponseAsync(user);
     }
 
-    public async Task<Result> RevokeTokenAsync(string userId)
+    public async Task<Result<bool>> RevokeTokenAsync(string userId)
     {
         var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
         {
-            return Result.Failure("User not found.");
+            return Result<bool>.Failure("User not found.", ResultErrorType.NotFound);
         }
 
         user.RefreshToken = null;
@@ -154,7 +154,7 @@ public class AuthService : IAuthService
 
         await _userManager.UpdateAsync(user);
 
-        return Result.Success("Token revoked successfully.");
+        return Result<bool>.Success(true);
     }
 
     public async Task<Result<UserDto>> GetCurrentUserAsync(string userId)
@@ -163,7 +163,7 @@ public class AuthService : IAuthService
 
         if (user == null || user.IsDeleted)
         {
-            return Result<UserDto>.Failure("User not found.");
+            return Result<UserDto>.Failure("User not found.", ResultErrorType.NotFound);
         }
 
         var roles = await _userManager.GetRolesAsync(user);
