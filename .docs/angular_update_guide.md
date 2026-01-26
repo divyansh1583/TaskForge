@@ -262,3 +262,80 @@ Migration completed (5 files modified).
  Migration completed (No changes made).
 
 ---
+
+PS C:\Projects\TaskForge\client> ng update @angular/core@21 @angular/cli@21
+The installed Angular CLI version is outdated.
+Installing a temporary Angular CLI versioned 21.1.1 to perform the update.
+Using package manager: npm
+Collecting installed dependencies...
+Found 25 dependencies.
+Fetching dependency metadata from registry...
+Updating package.json with dependency @angular/build @ "21.1.1" (was "20.3.15")...
+Updating package.json with dependency @angular/cli @ "21.1.1" (was "20.3.15")...
+Updating package.json with dependency @angular/compiler-cli @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency typescript @ "5.9.3" (was "5.8.3")...
+Updating package.json with dependency @angular/animations @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/common @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/compiler @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/core @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/forms @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/platform-browser @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/platform-browser-dynamic @ "21.1.1" (was "20.3.16")...
+Updating package.json with dependency @angular/router @ "21.1.1" (was "20.3.16")...
+UPDATE package.json (1118 bytes)
+✔ Cleaning node modules directory
+✔ Installing packages
+** Executing migrations of package '@angular/cli' **
+
+❯ Remove any karma configuration files that only contain the default content.
+The default configuration is automatically available without a specific project file.
+Migration completed (No changes made).
+
+❯ Update 'moduleResolution' to 'bundler' in TypeScript configurations.
+You can read more about this, here: https://www.typescriptlang.org/tsconfig/#moduleResolution
+Migration completed (No changes made).
+
+❯ Updates the 'lib' property in tsconfig files to use 'es2022' or a more modern version.
+UPDATE tsconfig.json (934 bytes)
+Migration completed (1 file modified).
+
+** Optional migrations of package '@angular/cli' **
+
+This package has 1 optional migration that can be executed.
+Optional migrations may be skipped and executed after the update process, if preferred.
+
+Select the migrations that you'd like to run [use-application-builder] Migrate application projects to the new build  
+system. (https://angular.dev/tools/cli/build-system-migration)
+
+❯ Migrate application projects to the new build system.
+Application projects that are using the '@angular-devkit/build-angular' package's 'browser' and/or 'browser-esbuild' builders will be migrated to use the new 'application' builder.
+You can read more about this, including known issues and limitations, here: https://angular.dev/tools/cli/build-system-migration
+Migration completed (No changes made).
+
+** Executing migrations of package '@angular/core' **
+
+❯ Adds `BootstrapContext` to `bootstrapApplication` calls in `main.server.ts` to support server rendering.
+Migration completed (No changes made).
+
+❯ Moves imports of `ApplicationConfig` from `@angular/platform-browser` to `@angular/core`.
+Migration completed (No changes made).
+
+❯ Migrates deprecated bootstrap options to providers.
+Migration completed (No changes made).
+
+❯ Converts the entire application to block control flow syntax.
+Migration completed (No changes made).
+
+❯ Ensures that the Router.lastSuccessfulNavigation signal is now invoked.
+Migration completed (No changes made).
+
+** Optional migrations of package '@angular/core' **
+
+This package has 1 optional migration that can be executed.
+Optional migrations may be skipped and executed after the update process, if preferred.
+
+Select the migrations that you'd like to run [router-current-navigation] Replaces usages of the deprecated
+Router.getCurrentNavigation method with the Router.currentNavigation signal.
+
+❯ Replaces usages of the deprecated Router.getCurrentNavigation method with the Router.currentNavigation signal.  
+ Migration completed (No changes made).
