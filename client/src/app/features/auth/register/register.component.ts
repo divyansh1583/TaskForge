@@ -55,10 +55,9 @@ function passwordStrengthValidator(control: AbstractControl): ValidationErrors |
  * requirements and helpful user feedback.
  */
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  template: `
+    selector: 'app-register',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink],
+    template: `
     <div class="card-body p-8">
       <h2 class="text-2xl font-bold text-center text-secondary-900 mb-6">
         Create Account
@@ -263,7 +262,7 @@ function passwordStrengthValidator(control: AbstractControl): ValidationErrors |
         </a>
       </p>
     </div>
-  `,
+  `
 })
 export class RegisterComponent {
   registerForm: FormGroup;

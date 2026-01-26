@@ -6,10 +6,9 @@ import { RouterLink } from '@angular/router';
  * WHY: Provides user-friendly error page for invalid routes.
  */
 @Component({
-  selector: 'app-not-found',
-  standalone: true,
-  imports: [RouterLink],
-  template: `
+    selector: 'app-not-found',
+    imports: [RouterLink],
+    template: `
     <div class="min-h-screen bg-secondary-50 flex items-center justify-center px-4">
       <div class="text-center">
         <h1 class="text-9xl font-bold text-primary-600">404</h1>
@@ -27,7 +26,7 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
     </div>
-  `,
+  `
 })
 export class NotFoundComponent {
   goBack(): void {

@@ -7,12 +7,11 @@ import { RouterOutlet } from '@angular/router';
  * following Angular's standalone component pattern.
  */
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  template: `
+    selector: 'app-root',
+    imports: [RouterOutlet],
+    template: `
     <router-outlet />
-  `,
+  `
 })
 export class AppComponent {
   title = 'TaskForge';

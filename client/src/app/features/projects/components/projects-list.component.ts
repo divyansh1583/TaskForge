@@ -14,10 +14,9 @@ import {
  * WHY: Provides a comprehensive view of all projects with management capabilities.
  */
 @Component({
-  selector: 'app-projects-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  template: `
+    selector: 'app-projects-list',
+    imports: [CommonModule, RouterModule, FormsModule],
+    template: `
     <div class="container mx-auto px-4 py-8">
       <!-- Header -->
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
@@ -255,7 +254,7 @@ import {
       }
     </div>
   `,
-  styles: [`
+    styles: [`
     .line-clamp-2 {
       display: -webkit-box;
       -webkit-line-clamp: 2;

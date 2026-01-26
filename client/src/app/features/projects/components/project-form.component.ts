@@ -15,10 +15,9 @@ import {
  * WHY: Reusable form that handles both create and edit operations.
  */
 @Component({
-  selector: 'app-project-form',
-  standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  template: `
+    selector: 'app-project-form',
+    imports: [CommonModule, RouterModule, ReactiveFormsModule],
+    template: `
     <div class="container mx-auto px-4 py-8 max-w-3xl">
       <!-- Header -->
       <div class="mb-8">

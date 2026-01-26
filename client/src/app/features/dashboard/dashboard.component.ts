@@ -11,10 +11,9 @@ import { NavbarComponent } from '@shared/components/navbar/navbar.component';
  * WHY: Provides role-based content and navigation based on user permissions.
  */
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [CommonModule, RouterLink, NavbarComponent],
-  template: `
+    selector: 'app-dashboard',
+    imports: [CommonModule, RouterLink, NavbarComponent],
+    template: `
     <div class="min-h-screen bg-secondary-50">
       <app-navbar />
 
@@ -178,7 +177,7 @@ import { NavbarComponent } from '@shared/components/navbar/navbar.component';
         </div>
       </main>
     </div>
-  `,
+  `
 })
 export class DashboardComponent {
   private authService = inject(AuthService);

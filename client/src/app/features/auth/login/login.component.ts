@@ -17,10 +17,9 @@ import { ApiError } from '@core/models/api.model';
  * and validation with custom error messages.
  */
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  template: `
+    selector: 'app-login',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink],
+    template: `
     <div class="card-body p-8">
       <h2 class="text-2xl font-bold text-center text-secondary-900 mb-6">
         Welcome Back
@@ -127,7 +126,7 @@ import { ApiError } from '@core/models/api.model';
         </a>
       </p>
     </div>
-  `,
+  `
 })
 export class LoginComponent {
   loginForm: FormGroup;

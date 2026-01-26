@@ -7,10 +7,9 @@ import { RouterOutlet } from '@angular/router';
  * with centered card design.
  */
 @Component({
-  selector: 'app-auth-layout',
-  standalone: true,
-  imports: [RouterOutlet],
-  template: `
+    selector: 'app-auth-layout',
+    imports: [RouterOutlet],
+    template: `
     <div class="min-h-screen bg-gradient-to-br from-primary-600 to-primary-900 flex items-center justify-center p-4">
       <div class="w-full max-w-md">
         <!-- Logo/Brand -->
@@ -30,6 +29,6 @@ import { RouterOutlet } from '@angular/router';
         </p>
       </div>
     </div>
-  `,
+  `
 })
 export class AuthLayoutComponent {}

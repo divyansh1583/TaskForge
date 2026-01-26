@@ -17,10 +17,9 @@ import {
  * WHY: Central hub for viewing project details and managing team members.
  */
 @Component({
-  selector: 'app-project-detail',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  template: `
+    selector: 'app-project-detail',
+    imports: [CommonModule, RouterModule, FormsModule],
+    template: `
     <div class="container mx-auto px-4 py-8">
       <!-- Loading State -->
       @if (loading()) {

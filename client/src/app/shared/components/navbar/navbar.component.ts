@@ -11,10 +11,9 @@ import { Roles } from '@core/constants/roles.constant';
  * visibility of menu items.
  */
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
-  template: `
+    selector: 'app-navbar',
+    imports: [CommonModule, RouterLink, RouterLinkActive],
+    template: `
     <nav class="bg-white border-b border-secondary-200 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -172,7 +171,7 @@ import { Roles } from '@core/constants/roles.constant';
       ></div>
     }
   `,
-  styles: [`
+    styles: [`
     .nav-link {
       @apply inline-flex items-center px-3 py-2 text-sm font-medium text-secondary-600 
              rounded-lg hover:bg-secondary-100 hover:text-secondary-900 transition-colors;
@@ -181,7 +180,7 @@ import { Roles } from '@core/constants/roles.constant';
     .nav-link-disabled {
       @apply cursor-not-allowed opacity-60;
     }
-  `],
+  `]
 })
 export class NavbarComponent {
   private authService = inject(AuthService);
