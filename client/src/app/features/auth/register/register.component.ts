@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   FormBuilder,
   FormGroup,
@@ -56,7 +56,7 @@ function passwordStrengthValidator(control: AbstractControl): ValidationErrors |
  */
 @Component({
     selector: 'app-register',
-    imports: [CommonModule, ReactiveFormsModule, RouterLink],
+    imports: [ReactiveFormsModule, RouterLink],
     template: `
     <div class="card-body p-8">
       <h2 class="text-2xl font-bold text-center text-secondary-900 mb-6">

@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 
 import { AuthService } from '@core/services/auth.service';
@@ -12,7 +12,7 @@ import { NavbarComponent } from '@shared/components/navbar/navbar.component';
  */
 @Component({
     selector: 'app-dashboard',
-    imports: [CommonModule, RouterLink, NavbarComponent],
+    imports: [RouterLink, NavbarComponent],
     template: `
     <div class="min-h-screen bg-secondary-50">
       <app-navbar />
