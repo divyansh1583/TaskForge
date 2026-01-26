@@ -1,341 +1,231 @@
-PS C:\Projects\TaskForge\client> ng update @angular/core@19 @angular/cli@19
-The installed Angular CLI version is outdated.
-Installing a temporary Angular CLI versioned 19.2.19 to perform the update.
-Using package manager: npm
-Collecting installed dependencies...
-Found 25 dependencies.
-Fetching dependency metadata from registry...
-Updating package.json with dependency @angular-devkit/build-angular @ "19.2.19" (was "18.2.21")...
-Updating package.json with dependency @angular/cli @ "19.2.19" (was "18.2.21")...
-Updating package.json with dependency @angular/compiler-cli @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency typescript @ "5.8.3" (was "5.4.5")...
-Updating package.json with dependency @angular/animations @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/common @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/core @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/forms @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular-devkit/build-angular @ "19.2.19" (was "18.2.21")...
-Updating package.json with dependency @angular/cli @ "19.2.19" (was "18.2.21")...
-Updating package.json with dependency @angular/compiler-cli @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency typescript @ "5.8.3" (was "5.4.5")...
-Updating package.json with dependency @angular/animations @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/common @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/core @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/forms @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler-cli @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency typescript @ "5.8.3" (was "5.4.5")...
-Updating package.json with dependency @angular/animations @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/common @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency typescript @ "5.8.3" (was "5.4.5")...
-Updating package.json with dependency @angular/animations @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/common @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/core @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/forms @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/common @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/compiler @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/core @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/forms @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/platform-browser @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/forms @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/platform-browser @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/platform-browser-dynamic @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/platform-browser-dynamic @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency @angular/router @ "19.2.18" (was "18.2.14")...
-Updating package.json with dependency zone.js @ "0.15.1" (was "0.14.10")...
-UPDATE package.json (1146 bytes)
-✔ Cleaning node modules directory
-✔ Installing packages
-** Executing migrations of package '@angular/cli' **
+# Angular Update Guide
 
-❯ Update '@angular/ssr' import paths to use the new '/node' entry point when 'CommonEngine' is detected.
-Migration completed (No changes made).
+> **TaskForge Client** - Migration from Angular 18 to Angular 21
 
-❯ Update the workspace configuration by replacing deprecated options in 'angular.json' for compatibility with the latest Angular CLI changes.
-Migration completed (No changes made).
-
-** Optional migrations of package '@angular/cli' **
-
-This package has 1 optional migration that can be executed.
-Optional migrations may be skipped and executed after the update process, if preferred.
-
-Select the migrations that you'd like to run [use-application-builder] Migrate application projects to the new build  
-system. (https://angular.dev/tools/cli/build-system-migration)
-
-❯ Migrate application projects to the new build system.
-Application projects that are using the '@angular-devkit/build-angular' package's 'browser' and/or 'browser-esbuild' builders will be migrated to use the new 'application' builder.
-You can read more about this, including known issues and limitations, here: https://angular.dev/tools/cli/build-system-migration
-UPDATE tsconfig.json (964 bytes)
-Migration completed (1 file modified).
-
-** Executing migrations of package '@angular/core' **
-
-❯ Updates non-standalone Directives, Component and Pipes to 'standalone:false' and removes 'standalone:true' from those who are standalone.
-UPDATE src/app/app.component.ts (425 bytes)
-UPDATE src/app/features/auth/auth-layout.component.ts (1083 bytes)
-UPDATE src/app/features/auth/login/login.component.ts (7460 bytes)
-UPDATE src/app/features/auth/register/register.component.ts (15931 bytes)
-UPDATE src/app/shared/components/navbar/navbar.component.ts (8617 bytes)
-UPDATE src/app/features/dashboard/dashboard.component.ts (9465 bytes)
-UPDATE src/app/features/projects/components/projects-list.component.ts (16570 bytes)
-UPDATE src/app/features/projects/components/project-form.component.ts (17434 bytes)
-UPDATE src/app/features/projects/components/project-detail.component.ts (19374 bytes)
-UPDATE src/app/shared/components/not-found/not-found.component.ts (1115 bytes)
-Migration completed (10 files modified).
-
-❯ Updates ExperimentalPendingTasks to PendingTasks.
-Migration completed (No changes made).
-UPDATE src/app/features/projects/components/project-form.component.ts (17434 bytes)
-UPDATE src/app/features/projects/components/project-detail.component.ts (19374 bytes)
-UPDATE src/app/shared/components/not-found/not-found.component.ts (1115 bytes)
-Migration completed (10 files modified).
-
-❯ Updates ExperimentalPendingTasks to PendingTasks.
-Migration completed (No changes made).
-
-UPDATE src/app/features/projects/components/project-form.component.ts (17434 bytes)
-UPDATE src/app/features/projects/components/project-detail.component.ts (19374 bytes)
-UPDATE src/app/shared/components/not-found/not-found.component.ts (1115 bytes)
-Migration completed (10 files modified).
-
-❯ Updates ExperimentalPendingTasks to PendingTasks.
-Migration completed (No changes made).
-UPDATE src/app/shared/components/not-found/not-found.component.ts (1115 bytes)
-Migration completed (10 files modified).
-
-❯ Updates ExperimentalPendingTasks to PendingTasks.
-Migration completed (No changes made).
-
-❯ Updates ExperimentalPendingTasks to PendingTasks.
-Migration completed (No changes made).
-
-Migration completed (No changes made).
-
-❯ Adds `BootstrapContext` to `bootstrapApplication` calls in `main.server.ts` to support server rendering.
-❯ Adds `BootstrapContext` to `bootstrapApplication` calls in `main.server.ts` to support server rendering.
-Migration completed (No changes made).
-Migration completed (No changes made).
-
-** Optional migrations of package '@angular/core' **
-
-This package has 1 optional migration that can be executed.
-Optional migrations may be skipped and executed after the update process, if preferred.
-
-Select the migrations that you'd like to run
+This document records the step-by-step upgrade process for the TaskForge Angular client application.
 
 ---
 
-Error: Repository is not clean. Please commit or stash any changes before updating.
-PS C:\Projects\TaskForge\client> ng update @angular/core@20 @angular/cli@20
-The installed Angular CLI version is outdated.
-Installing a temporary Angular CLI versioned 20.3.15 to perform the update.
-Using package manager: npm
-Collecting installed dependencies...
-Found 25 dependencies.
-Fetching dependency metadata from registry...
-Updating package.json with dependency @angular-devkit/build-angular @ "20.3.15" (was "19.2.19")...
-Updating package.json with dependency @angular/cli @ "20.3.15" (was "19.2.19")...
-Updating package.json with dependency @angular/compiler-cli @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/animations @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/common @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/compiler @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/core @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/forms @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/platform-browser @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/platform-browser-dynamic @ "20.3.16" (was "19.2.18")...
-Updating package.json with dependency @angular/router @ "20.3.16" (was "19.2.18")...
-UPDATE package.json (1146 bytes)
-✔ Cleaning node modules directory
-✔ Installing packages
-** Executing migrations of package '@angular/cli' **
+## Table of Contents
 
-❯ Update workspace generation defaults to maintain previous style guide behavior.
-UPDATE angular.json (3681 bytes)
-Migration completed (1 file modified).
-
-❯ Migrate imports of 'provideServerRendering' from '@angular/platform-server' to '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-** Executing migrations of package '@angular/cli' **
-
-❯ Update workspace generation defaults to maintain previous style guide behavior.
-UPDATE angular.json (3681 bytes)
-Migration completed (1 file modified).
-
-❯ Migrate imports of 'provideServerRendering' from '@angular/platform-server' to '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-
-❯ Update workspace generation defaults to maintain previous style guide behavior.
-UPDATE angular.json (3681 bytes)
-Migration completed (1 file modified).
-
-❯ Migrate imports of 'provideServerRendering' from '@angular/platform-server' to '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-UPDATE angular.json (3681 bytes)
-Migration completed (1 file modified).
-
-❯ Migrate imports of 'provideServerRendering' from '@angular/platform-server' to '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-
-❯ Migrate imports of 'provideServerRendering' from '@angular/platform-server' to '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-❯ Migrate imports of 'provideServerRendering' from '@angular/platform-server' to '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-❯ Migrate 'provideServerRendering' to use 'withRoutes', and remove 'provideServerRouting' and 'provideServerRoutesConfig' from '@angular/ssr'.
-Migration completed (No changes made).
-
-❯ Update 'moduleResolution' to 'bundler' in TypeScript configurations.
-❯ Update 'moduleResolution' to 'bundler' in TypeScript configurations.
-You can read more about this, here: https://www.typescriptlang.org/tsconfig/#moduleResolution
-Migration completed (No changes made).
-
-❯ Remove any karma configuration files that only contain the default content.
-The default configuration is automatically available without a specific project file.
-Migration completed (No changes made).
-Migration completed (No changes made).
-
-** Optional migrations of package '@angular/cli' **
-** Optional migrations of package '@angular/cli' **
-
-This package has 1 optional migration that can be executed.
-Optional migrations may be skipped and executed after the update process, if preferred.
-
-Select the migrations that you'd like to run [use-application-builder] Migrate application projects to the new build  
-system. (https://angular.dev/tools/cli/build-system-migration)
-
-❯ Migrate application projects to the new build system.
-Application projects that are using the '@angular-devkit/build-angular' package's 'browser' and/or 'browser-esbuild' builders will be migrated to use the new 'application' builder.
-You can read more about this, including known issues and limitations, here: https://angular.dev/tools/cli/build-system-migration
-UPDATE angular.json (3636 bytes)
-UPDATE package.json (1129 bytes)
-✔ Packages installed successfully.
-Migration completed (2 files modified).
-
-** Executing migrations of package '@angular/core' **
-
-❯ Moves imports of `DOCUMENT` from `@angular/common` to `@angular/core`.
-Migration completed (No changes made).
-
-❯ Replaces usages of the deprecated InjectFlags enum.
-Migration completed (No changes made).
-
-❯ Replaces usages of the deprecated TestBed.get method with TestBed.inject.
-Migration completed (No changes made).
-
-❯ Adds `BootstrapContext` to `bootstrapApplication` calls in `main.server.ts` to support server rendering.
-Migration completed (No changes made).
-
-** Optional migrations of package '@angular/core' **
-
-This package has 2 optional migrations that can be executed.
-Optional migrations may be skipped and executed after the update process, if preferred.
-
-Select the migrations that you'd like to run [control-flow-migration] Converts the entire application to block control
-flow syntax., [router-current-navigation] Replaces usages of the deprecated Router.getCurrentNavigation method with  
-the Router.currentNavigation signal.
-
-❯ Converts the entire application to block control flow syntax.
-UPDATE src/app/features/auth/login/login.component.ts (7399 bytes)
-UPDATE src/app/features/auth/register/register.component.ts (15870 bytes)
-UPDATE src/app/shared/components/navbar/navbar.component.ts (8556 bytes)
-UPDATE src/app/features/dashboard/dashboard.component.ts (9404 bytes)
-UPDATE src/app/features/projects/components/project-form.component.ts (17373 bytes)
-Migration completed (5 files modified).
-
-❯ Replaces usages of the deprecated Router.getCurrentNavigation method with the Router.currentNavigation signal.  
- Migration completed (No changes made).
+- [Overview](#overview)
+- [Step 1: Angular 18 → 19](#step-1-angular-18--19)
+- [Step 2: Angular 19 → 20](#step-2-angular-19--20)
+- [Step 3: Angular 20 → 21](#step-3-angular-20--21)
+- [Summary of Changes](#summary-of-changes)
 
 ---
 
-PS C:\Projects\TaskForge\client> ng update @angular/core@21 @angular/cli@21
-The installed Angular CLI version is outdated.
-Installing a temporary Angular CLI versioned 21.1.1 to perform the update.
-Using package manager: npm
-Collecting installed dependencies...
-Found 25 dependencies.
-Fetching dependency metadata from registry...
-Updating package.json with dependency @angular/build @ "21.1.1" (was "20.3.15")...
-Updating package.json with dependency @angular/cli @ "21.1.1" (was "20.3.15")...
-Updating package.json with dependency @angular/compiler-cli @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency typescript @ "5.9.3" (was "5.8.3")...
-Updating package.json with dependency @angular/animations @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/common @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/compiler @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/core @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/forms @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/platform-browser @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/platform-browser-dynamic @ "21.1.1" (was "20.3.16")...
-Updating package.json with dependency @angular/router @ "21.1.1" (was "20.3.16")...
-UPDATE package.json (1118 bytes)
-✔ Cleaning node modules directory
-✔ Installing packages
-** Executing migrations of package '@angular/cli' **
+## Overview
 
-❯ Remove any karma configuration files that only contain the default content.
-The default configuration is automatically available without a specific project file.
-Migration completed (No changes made).
+| Version | Angular | TypeScript | Key Changes |
+|---------|---------|------------|-------------|
+| Before  | 18.2.14 | 5.4.5      | Original version |
+| Step 1  | 19.2.18 | 5.8.3      | Standalone components, new build system |
+| Step 2  | 20.3.16 | 5.8.3      | Control flow migration, workspace defaults |
+| Final   | 21.1.1  | 5.9.3      | ES2022 lib, final migrations |
 
-❯ Update 'moduleResolution' to 'bundler' in TypeScript configurations.
-You can read more about this, here: https://www.typescriptlang.org/tsconfig/#moduleResolution
-Migration completed (No changes made).
+---
 
-❯ Updates the 'lib' property in tsconfig files to use 'es2022' or a more modern version.
-UPDATE tsconfig.json (934 bytes)
-Migration completed (1 file modified).
+## Step 1: Angular 18 → 19
 
-** Optional migrations of package '@angular/cli' **
+### Command
 
-This package has 1 optional migration that can be executed.
-Optional migrations may be skipped and executed after the update process, if preferred.
+```bash
+ng update @angular/core@19 @angular/cli@19
+```
 
-Select the migrations that you'd like to run [use-application-builder] Migrate application projects to the new build  
-system. (https://angular.dev/tools/cli/build-system-migration)
+### Dependencies Updated
 
-❯ Migrate application projects to the new build system.
-Application projects that are using the '@angular-devkit/build-angular' package's 'browser' and/or 'browser-esbuild' builders will be migrated to use the new 'application' builder.
-You can read more about this, including known issues and limitations, here: https://angular.dev/tools/cli/build-system-migration
-Migration completed (No changes made).
+| Package | From | To |
+|---------|------|-----|
+| `@angular-devkit/build-angular` | 18.2.21 | 19.2.19 |
+| `@angular/cli` | 18.2.21 | 19.2.19 |
+| `@angular/core` | 18.2.14 | 19.2.18 |
+| `@angular/compiler-cli` | 18.2.14 | 19.2.18 |
+| `@angular/animations` | 18.2.14 | 19.2.18 |
+| `@angular/common` | 18.2.14 | 19.2.18 |
+| `@angular/compiler` | 18.2.14 | 19.2.18 |
+| `@angular/forms` | 18.2.14 | 19.2.18 |
+| `@angular/platform-browser` | 18.2.14 | 19.2.18 |
+| `@angular/platform-browser-dynamic` | 18.2.14 | 19.2.18 |
+| `@angular/router` | 18.2.14 | 19.2.18 |
+| `typescript` | 5.4.5 | 5.8.3 |
+| `zone.js` | 0.14.10 | 0.15.1 |
 
-** Executing migrations of package '@angular/core' **
+### Migrations Executed
 
-❯ Adds `BootstrapContext` to `bootstrapApplication` calls in `main.server.ts` to support server rendering.
-Migration completed (No changes made).
+#### `@angular/cli` Migrations
 
-❯ Moves imports of `ApplicationConfig` from `@angular/platform-browser` to `@angular/core`.
-Migration completed (No changes made).
+- ✅ Update `@angular/ssr` import paths for `CommonEngine` — *No changes needed*
+- ✅ Update deprecated options in `angular.json` — *No changes needed*
 
-❯ Migrates deprecated bootstrap options to providers.
-Migration completed (No changes made).
+#### Optional: New Build System Migration
 
-❯ Converts the entire application to block control flow syntax.
-Migration completed (No changes made).
+> Migrated to the new `application` builder from `browser`/`browser-esbuild`.
+> 
+> 📖 [Build System Migration Guide](https://angular.dev/tools/cli/build-system-migration)
 
-❯ Ensures that the Router.lastSuccessfulNavigation signal is now invoked.
-Migration completed (No changes made).
+**Files Modified:**
+- `tsconfig.json`
 
-** Optional migrations of package '@angular/core' **
+#### `@angular/core` Migrations
 
-This package has 1 optional migration that can be executed.
-Optional migrations may be skipped and executed after the update process, if preferred.
+- ✅ **Standalone Component Migration** — Updated components to explicitly set `standalone: false`
+- ✅ `ExperimentalPendingTasks` → `PendingTasks` — *No changes needed*
+- ✅ Add `BootstrapContext` to SSR — *No changes needed*
 
-Select the migrations that you'd like to run [router-current-navigation] Replaces usages of the deprecated
-Router.getCurrentNavigation method with the Router.currentNavigation signal.
+**Files Modified (Standalone Migration):**
+- `src/app/app.component.ts`
+- `src/app/features/auth/auth-layout.component.ts`
+- `src/app/features/auth/login/login.component.ts`
+- `src/app/features/auth/register/register.component.ts`
+- `src/app/shared/components/navbar/navbar.component.ts`
+- `src/app/features/dashboard/dashboard.component.ts`
+- `src/app/features/projects/components/projects-list.component.ts`
+- `src/app/features/projects/components/project-form.component.ts`
+- `src/app/features/projects/components/project-detail.component.ts`
+- `src/app/shared/components/not-found/not-found.component.ts`
 
-❯ Replaces usages of the deprecated Router.getCurrentNavigation method with the Router.currentNavigation signal.  
- Migration completed (No changes made).
+---
+
+## Step 2: Angular 19 → 20
+
+### Command
+
+```bash
+ng update @angular/core@20 @angular/cli@20
+```
+
+### Dependencies Updated
+
+| Package | From | To |
+|---------|------|-----|
+| `@angular-devkit/build-angular` | 19.2.19 | 20.3.15 |
+| `@angular/cli` | 19.2.19 | 20.3.15 |
+| `@angular/core` | 19.2.18 | 20.3.16 |
+| `@angular/compiler-cli` | 19.2.18 | 20.3.16 |
+| `@angular/animations` | 19.2.18 | 20.3.16 |
+| `@angular/common` | 19.2.18 | 20.3.16 |
+| `@angular/compiler` | 19.2.18 | 20.3.16 |
+| `@angular/forms` | 19.2.18 | 20.3.16 |
+| `@angular/platform-browser` | 19.2.18 | 20.3.16 |
+| `@angular/platform-browser-dynamic` | 19.2.18 | 20.3.16 |
+| `@angular/router` | 19.2.18 | 20.3.16 |
+
+### Migrations Executed
+
+#### `@angular/cli` Migrations
+
+- ✅ Update workspace generation defaults — `angular.json` modified
+- ✅ Migrate `provideServerRendering` imports — *No changes needed*
+- ✅ Migrate `provideServerRendering` to use `withRoutes` — *No changes needed*
+- ✅ Update `moduleResolution` to `bundler` — *No changes needed*
+  > 📖 [TypeScript moduleResolution](https://www.typescriptlang.org/tsconfig/#moduleResolution)
+- ✅ Remove default karma configuration files — *No changes needed*
+
+#### Optional: Application Builder Migration
+
+**Files Modified:**
+- `angular.json`
+- `package.json`
+
+#### `@angular/core` Migrations
+
+- ✅ Move `DOCUMENT` imports to `@angular/core` — *No changes needed*
+- ✅ Replace deprecated `InjectFlags` enum — *No changes needed*
+- ✅ Replace `TestBed.get` with `TestBed.inject` — *No changes needed*
+- ✅ Add `BootstrapContext` for SSR — *No changes needed*
+
+#### Optional: Control Flow Migration
+
+> Converted `*ngIf`, `*ngFor`, `*ngSwitch` to the new block control flow syntax (`@if`, `@for`, `@switch`).
+
+**Files Modified:**
+- `src/app/features/auth/login/login.component.ts`
+- `src/app/features/auth/register/register.component.ts`
+- `src/app/shared/components/navbar/navbar.component.ts`
+- `src/app/features/dashboard/dashboard.component.ts`
+- `src/app/features/projects/components/project-form.component.ts`
+
+---
+
+## Step 3: Angular 20 → 21
+
+### Command
+
+```bash
+ng update @angular/core@21 @angular/cli@21
+```
+
+### Dependencies Updated
+
+| Package | From | To |
+|---------|------|-----|
+| `@angular/build` | 20.3.15 | 21.1.1 |
+| `@angular/cli` | 20.3.15 | 21.1.1 |
+| `@angular/core` | 20.3.16 | 21.1.1 |
+| `@angular/compiler-cli` | 20.3.16 | 21.1.1 |
+| `@angular/animations` | 20.3.16 | 21.1.1 |
+| `@angular/common` | 20.3.16 | 21.1.1 |
+| `@angular/compiler` | 20.3.16 | 21.1.1 |
+| `@angular/forms` | 20.3.16 | 21.1.1 |
+| `@angular/platform-browser` | 20.3.16 | 21.1.1 |
+| `@angular/platform-browser-dynamic` | 20.3.16 | 21.1.1 |
+| `@angular/router` | 20.3.16 | 21.1.1 |
+| `typescript` | 5.8.3 | 5.9.3 |
+
+### Migrations Executed
+
+#### `@angular/cli` Migrations
+
+- ✅ Remove default karma configuration files — *No changes needed*
+- ✅ Update `moduleResolution` to `bundler` — *No changes needed*
+- ✅ Update `lib` to `es2022` — `tsconfig.json` modified
+
+#### `@angular/core` Migrations
+
+- ✅ Add `BootstrapContext` for SSR — *No changes needed*
+- ✅ Move `ApplicationConfig` imports to `@angular/core` — *No changes needed*
+- ✅ Migrate deprecated bootstrap options to providers — *No changes needed*
+- ✅ Convert to block control flow syntax — *No changes needed*
+- ✅ Ensure `Router.lastSuccessfulNavigation` signal is invoked — *No changes needed*
+
+#### Optional Migrations
+
+- ✅ Replace `Router.getCurrentNavigation` with `currentNavigation` signal — *No changes needed*
+
+---
+
+## Summary of Changes
+
+### Files Modified During Migration
+
+| File | v19 | v20 | v21 |
+|------|-----|-----|-----|
+| `package.json` | ✅ | ✅ | ✅ |
+| `tsconfig.json` | ✅ | | ✅ |
+| `angular.json` | | ✅ | |
+| `src/app/app.component.ts` | ✅ | | |
+| `src/app/features/auth/auth-layout.component.ts` | ✅ | | |
+| `src/app/features/auth/login/login.component.ts` | ✅ | ✅ | |
+| `src/app/features/auth/register/register.component.ts` | ✅ | ✅ | |
+| `src/app/shared/components/navbar/navbar.component.ts` | ✅ | ✅ | |
+| `src/app/features/dashboard/dashboard.component.ts` | ✅ | ✅ | |
+| `src/app/features/projects/components/projects-list.component.ts` | ✅ | | |
+| `src/app/features/projects/components/project-form.component.ts` | ✅ | ✅ | |
+| `src/app/features/projects/components/project-detail.component.ts` | ✅ | | |
+| `src/app/shared/components/not-found/not-found.component.ts` | ✅ | | |
+
+### Key Migration Highlights
+
+1. **Standalone Components** (v19): All components now explicitly declare `standalone: false`
+2. **New Build System** (v19-20): Migrated from `browser` to `application` builder
+3. **Control Flow Syntax** (v20): Converted structural directives to block syntax
+4. **TypeScript 5.9** (v21): Updated to latest TypeScript with ES2022 lib support
+
+### References
+
+- [Angular Update Guide](https://angular.dev/update-guide)
+- [Build System Migration](https://angular.dev/tools/cli/build-system-migration)
+- [TypeScript moduleResolution](https://www.typescriptlang.org/tsconfig/#moduleResolution)
