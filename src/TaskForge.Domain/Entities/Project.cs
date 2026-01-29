@@ -36,4 +36,10 @@ public class Project : BaseEntity, IAggregateRoot
     public Team? Team { get; set; }
     
     public Guid? TeamId { get; set; }
+
+    /// <summary>
+    /// Tasks belonging to this project.
+    /// WHY: One-to-many relationship enables task organization by project.
+    /// </summary>
+    public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();
 }

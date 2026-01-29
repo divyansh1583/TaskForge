@@ -33,6 +33,11 @@ export const routes: Routes = [
       import('./features/projects/projects.routes').then((m) => m.PROJECT_ROUTES),
   },
   {
+    path: 'tasks',
+    loadChildren: () =>
+      import('./features/tasks/tasks.routes').then((m) => m.TASK_ROUTES),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./shared/components/not-found/not-found.component').then(

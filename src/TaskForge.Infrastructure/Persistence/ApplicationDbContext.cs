@@ -28,6 +28,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<Team> Teams => Set<Team>();
     public DbSet<TeamMember> TeamMembers => Set<TeamMember>();
+    public DbSet<TaskItem> TaskItems => Set<TaskItem>();
 
     /// <summary>
     /// Override SaveChanges to automatically set audit fields.

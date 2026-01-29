@@ -100,6 +100,7 @@ public static class DependencyInjection
         services.AddScoped<IDateTimeService, DateTimeService>();
         services.AddScoped<IProjectService, ProjectService>();
         services.AddScoped<ITeamService, TeamService>();
+        services.AddScoped<ITaskService, TaskService>();
 
         return services;
     }

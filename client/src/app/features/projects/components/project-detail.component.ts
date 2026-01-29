@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProjectService } from '../../../core/services/project.service';
 import { TeamService } from '../../../core/services/team.service';
+import { TaskService } from '../../../core/services/task.service';
 import { 
   ProjectDetailDto, 
   ProjectStatus,
@@ -11,6 +12,15 @@ import {
   TeamMemberDto,
   TeamRole
 } from '../../../core/models/project.model';
+import {
+  TaskListDto,
+  TaskStatus,
+  TaskPriority,
+  TaskStatusLabels,
+  TaskPriorityLabels,
+  TaskStatusColors,
+  TaskPriorityColors
+} from '../../../core/models/task.model';
 
 /**
  * Project detail component showing project info and team management.
@@ -152,6 +162,106 @@ import {
                 </div>
               }
             </div>
+
+            <!-- Tasks Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-900">Tasks</h2>
+                <a 
+                  [routerLink]="['/tasks', 'new']"
+                  [queryParams]="{projectId: project()?.id}"
+                  class="text-primary-600 hover:text-primary-700 text-sm font-medium"
+                >
+                  + Add Task
+                </a>
+              </div>
+
+              @if (tasksLoading()) {
+                <div class="flex justify-center py-8">
+                  <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                </div>
+              } @else if (tasks().length) {
+                <!-- Task Summary -->
+                <div class="grid grid-cols-4 gap-2 mb-4">
+                  <div class="bg-gray-50 rounded p-2 text-center">
+                    <div class="text-lg font-semibold text-gray-900">{{ tasks().length }}</div>
+                    <div class="text-xs text-gray-500">Total</div>
+                  </div>
+                  <div class="bg-blue-50 rounded p-2 text-center">
+                    <div class="text-lg font-semibold text-blue-700">{{ getTaskCountByStatus(TaskStatus.InProgress) }}</div>
+                    <div class="text-xs text-blue-600">In Progress</div>
+                  </div>
+                  <div class="bg-green-50 rounded p-2 text-center">
+                    <div class="text-lg font-semibold text-green-700">{{ getTaskCountByStatus(TaskStatus.Done) }}</div>
+                    <div class="text-xs text-green-600">Done</div>
+                  </div>
+                  <div class="bg-red-50 rounded p-2 text-center">
+                    <div class="text-lg font-semibold text-red-700">{{ getOverdueTaskCount() }}</div>
+                    <div class="text-xs text-red-600">Overdue</div>
+                  </div>
+                </div>
+
+                <!-- Task List -->
+                <div class="divide-y divide-gray-100 max-h-96 overflow-y-auto">
+                  @for (task of tasks().slice(0, 10); track task.id) {
+                    <a 
+                      [routerLink]="['/tasks', task.id]"
+                      class="py-3 flex items-center justify-between hover:bg-gray-50 -mx-2 px-2 rounded transition-colors"
+                    >
+                      <div class="flex-1 min-w-0">
+                        <p class="font-medium text-gray-900 truncate">{{ task.title }}</p>
+                        <div class="flex items-center gap-2 mt-1">
+                          <span [class]="getTaskStatusClass(task.status)">
+                            {{ getTaskStatusLabel(task.status) }}
+                          </span>
+                          <span [class]="getTaskPriorityClass(task.priority)">
+                            {{ getTaskPriorityLabel(task.priority) }}
+                          </span>
+                          @if (task.dueDate) {
+                            <span class="text-xs text-gray-500" [class.text-red-600]="isTaskOverdue(task)">
+                              Due {{ task.dueDate | date:'shortDate' }}
+                            </span>
+                          }
+                        </div>
+                      </div>
+                      @if (task.assigneeName) {
+                        <div class="ml-3 flex items-center gap-1 text-xs text-gray-500">
+                          <div class="w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-xs font-medium">
+                            {{ getInitials(task.assigneeName) }}
+                          </div>
+                        </div>
+                      }
+                    </a>
+                  }
+                </div>
+
+                @if (tasks().length > 10) {
+                  <div class="mt-4 pt-4 border-t border-gray-100 text-center">
+                    <a 
+                      [routerLink]="['/tasks']"
+                      [queryParams]="{projectId: project()?.id}"
+                      class="text-primary-600 hover:text-primary-700 text-sm font-medium"
+                    >
+                      View all {{ tasks().length }} tasks →
+                    </a>
+                  </div>
+                }
+              } @else {
+                <div class="text-center py-8">
+                  <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                  </svg>
+                  <p class="mt-2 text-gray-500">No tasks yet</p>
+                  <a 
+                    [routerLink]="['/tasks', 'new']"
+                    [queryParams]="{projectId: project()?.id}"
+                    class="mt-4 inline-block text-primary-600 hover:text-primary-700 font-medium"
+                  >
+                    Create the first task
+                  </a>
+                </div>
+              }
+            </div>
           </div>
 
           <!-- Sidebar -->
@@ -287,17 +397,23 @@ export class ProjectDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly projectService = inject(ProjectService);
   private readonly teamService = inject(TeamService);
+  private readonly taskService = inject(TaskService);
 
   // State signals
   project = signal<ProjectDetailDto | null>(null);
   team = signal<TeamDto | null>(null);
+  tasks = signal<TaskListDto[]>([]);
   loading = signal(false);
   teamLoading = signal(false);
+  tasksLoading = signal(false);
   error = signal<string | null>(null);
   
   // Modal state
   showAddMemberModal = signal(false);
   newMemberEmail = '';
+
+  // Task enums for template
+  TaskStatus = TaskStatus;
   newMemberRole = TeamRole.Member;
   addingMember = signal(false);
   addMemberError = signal<string | null>(null);
@@ -336,6 +452,7 @@ export class ProjectDetailComponent implements OnInit {
         this.project.set(project);
         this.loading.set(false);
         this.loadTeam(project.teamId);
+        this.loadTasks(project.id);
       },
       error: (err) => {
         console.error('Error loading project:', err);
@@ -356,6 +473,21 @@ export class ProjectDetailComponent implements OnInit {
       error: (err) => {
         console.error('Error loading team:', err);
         this.teamLoading.set(false);
+      }
+    });
+  }
+
+  private loadTasks(projectId: string): void {
+    this.tasksLoading.set(true);
+
+    this.taskService.getTasksByProject(projectId).subscribe({
+      next: (response) => {
+        this.tasks.set(response.items);
+        this.tasksLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Error loading tasks:', err);
+        this.tasksLoading.set(false);
       }
     });
   }
@@ -463,6 +595,46 @@ export class ProjectDetailComponent implements OnInit {
       .join('')
       .toUpperCase()
       .substring(0, 2);
+  }
+
+  // Task helper methods
+  getTaskCountByStatus(status: TaskStatus): number {
+    return this.tasks().filter(t => t.status === status).length;
+  }
+
+  getOverdueTaskCount(): number {
+    const now = new Date();
+    return this.tasks().filter(t => 
+      t.dueDate && 
+      new Date(t.dueDate) < now && 
+      t.status !== TaskStatus.Done && 
+      t.status !== TaskStatus.Cancelled
+    ).length;
+  }
+
+  isTaskOverdue(task: TaskListDto): boolean {
+    if (!task.dueDate || task.status === TaskStatus.Done || task.status === TaskStatus.Cancelled) {
+      return false;
+    }
+    return new Date(task.dueDate) < new Date();
+  }
+
+  getTaskStatusLabel(status: TaskStatus): string {
+    return TaskStatusLabels[status] || 'Unknown';
+  }
+
+  getTaskPriorityLabel(priority: TaskPriority): string {
+    return TaskPriorityLabels[priority] || 'Unknown';
+  }
+
+  getTaskStatusClass(status: TaskStatus): string {
+    const colors = TaskStatusColors[status] || 'bg-gray-100 text-gray-800';
+    return `px-2 py-0.5 text-xs font-medium rounded ${colors}`;
+  }
+
+  getTaskPriorityClass(priority: TaskPriority): string {
+    const colors = TaskPriorityColors[priority] || 'bg-gray-100 text-gray-800';
+    return `px-2 py-0.5 text-xs font-medium rounded ${colors}`;
   }
 }
 
